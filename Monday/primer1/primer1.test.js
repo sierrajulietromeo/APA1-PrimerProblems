@@ -10,7 +10,7 @@ describe('Your Module/Component Name', () => {
     const input = 'some input';
     const expectedOutput = 'expected result';
 
-    // Act: Call the function or render the component
+    // Act: Call the function 
     const result = temperatureConversion(input); 
 
     // Assert: Check if the result matches the expectation
