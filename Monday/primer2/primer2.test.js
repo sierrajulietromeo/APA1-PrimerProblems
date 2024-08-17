@@ -1,8 +1,8 @@
 // Import the necessary modules
-import temperatureConversion  from './primer1.js'; // Adjust paths as needed
+import name from './primer2.js'; // Adjust paths as needed
 
 // Describe a group of related tests
-describe('Your Module Name', () => {
+describe('Your Module  Name', () => {
 
   // Test a specific functionality
   test('should do something', () => {
@@ -11,7 +11,7 @@ describe('Your Module Name', () => {
     const expectedOutput = 'expected result';
 
     // Act: Call the function 
-    const result = temperatureConversion(input); 
+    const result = functionName(input); 
 
     // Assert: Check if the result matches the expectation
     expect(result).toBe(expectedOutput); 
