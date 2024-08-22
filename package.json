@@ -2,9 +2,10 @@
   "scripts": {
     "test": "jest"
   },
-  "type":"module",
+  "type": "module",
   "dependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "priorityqueuejs": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
