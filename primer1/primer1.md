@@ -16,7 +16,7 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
 ### Notes
 
 * Ensure to commit/push as appropriate.
-* Follow TDD. Write your tests, the write code to pass the tests. See the template in ```primer1.test.js```
+* Follow TDD. For this Primer, we have provided you with the tests. See them  ```primer1.test.js```
 * Refactor the program as you see fit following industry standard conventions.
 
 ### Constraints
@@ -53,5 +53,4 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
 |Category|Fail (<40%)|Pass (40-59%)|Merit (60-69%)|Distinction (70-100%)|
 |:---|:---|:---|:---|:---|
 |Functionality|Program does not run or produces incorrect results for most cases, including additional requirements.|Program runs and handles basic cases correctly but fails on edge cases, invalid inputs, or additional requirements.|Program handles most cases, including some edge cases and additional requirements, with minor errors.|Program is fully functional, handles all cases (including edge cases, invalid inputs, and additional requirements) gracefully, and produces accurate results consistently.|
-|Testing|Little to no evidence of testing, or tests are poorly written and do not cover core functionality.|Basic test cases are present, but coverage is limited, and some critical paths are not tested.|Test suite covers most functionality, including edge cases, demonstrating good understanding of test-driven development.|Comprehensive test suite with excellent coverage, including edge cases, error handling, and potential user input errors. Tests are well-structured and maintainable.|
 |Code Quality & Standards|Code is poorly organised, difficult to read, and does not meet basic programming conventions.|Code is somewhat organised, but readability could be improved. Some adherence to coding standards is evident, but inconsistencies exist.|Code is well-organised, readable, and mostly adheres to coding standards. Demonstrates a good understanding of clean code principles.|Code is exemplary, demonstrating near-professional-level standards. Adheres to industry best practices and coding standards consistently. Code is highly maintainable and extensible.|
