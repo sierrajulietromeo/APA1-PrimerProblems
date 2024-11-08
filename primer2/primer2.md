@@ -22,6 +22,11 @@ console.log(game);
 ];
 ```
 
+### Additional Revisions:
+
+*   Update the program to support shuffling two decks together (104 cards).
+
+
 ### Adopt and use good programming standards
 
 * Eliminate or minimise code duplication & any unnecessary redundancy.
