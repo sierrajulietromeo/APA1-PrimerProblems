@@ -24,6 +24,8 @@ The base code includes the following classes and methods:
 *   **Product Class:**
     *   `getProductDetails()`
 
+`primer4.test.js` includes the current tests written for this code, and it currently passes them all.
+
 ### UML Class Diagram (Base Code)
 
 ![UML Class Diagram of original system](images/umlClassDiagram_original.png)
@@ -66,7 +68,7 @@ console.log(retrievedProduct); // Should output the laptop details including bra
 ### Additional Considerations:
 
 1. Error Handling: Ensure that your methods handle errors gracefully (e.g., trying to add a product with a duplicate ID).
-1. Testing: Write comprehensive tests to verify the functionality of your extended inventory management system.
+1. Testing: Update `primer4.test.js` verify the functionality of your extended inventory management system.
 1. Code Quality: Adhere to the provided programming standards for clear, maintainable code.
 
 
