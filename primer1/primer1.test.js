@@ -2,7 +2,7 @@
 import temperatureConversion  from './primer1.js'; // Adjust paths as needed
 
 // Making sure you are in the same folder, you can run this test file with: jest primer1.test.js
-// To run some tests: jest -t "Fahrenheit" primer1.test.js (runs all tests with "Fahrenheit in their name")
+// To run some tests: jest -t "Fahrenheit" primer1.test.js (runs all tests with "Fahrenheit" in their name)
 // To run one specific test, e.g. jest -t "should convert positive Fahrenheit to Celsius" primer1.test.js
 
 describe('temperatureConversion', () => {

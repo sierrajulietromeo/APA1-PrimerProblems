@@ -16,7 +16,7 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
 ### Notes
 
 * Ensure to commit/push as appropriate.
-* Follow TDD. For this Primer, we have provided you with the tests. See them  ```primer1.test.js```
+* Follow TDD. For this Primer, we have provided you with the tests. See them in  ```primer1.test.js```
 * Refactor the program as you see fit following industry standard conventions.
 
 ### Constraints
