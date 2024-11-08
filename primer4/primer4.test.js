@@ -1,35 +1,56 @@
 // Import the necessary modules
-import name from './primer4.js'; // Adjust paths as needed
+import Product from './Product.js';
+import Inventory from './Inventory.js';
 
-// Making sure you are in the same folder, you can run this test file with: jest primer1.test.js
+// Making sure you are in the same folder, you can run this test file with: jest primer4.test.js
 
-// Describe a group of related tests
-describe('Primer 4 ', () => {
+describe('Inventory', () => {
+  let inventory;
+  let product1, product2;
 
-  // Test a specific functionality
-  test('T01 should do something', () => {
-    // Arrange: Set up any necessary data or conditions
-    const input = 'some input';
-    const expectedOutput = 'expected result';
-
-    // Act: Call the function 
-    const result = functionName(inputshere);
-    // Assert: Check if the result matches the expectation
-    expect(result).toBe(expectedOutput); 
+  beforeEach(() => {
+    inventory = new Inventory();
+    product1 = new Product("A123", "T-shirt", 19.99, 100);
+    product2 = new Product("B456", "Jeans", 49.99, 50);
   });
 
-   // Test a specific functionality
-   test('T02 should do something else', () => {
-    // Arrange: Set up any necessary data or conditions
-    const input = 'some input';
-    const expectedOutput = 'expected result';
+  describe('Adding Products', () => {
+    test('can add products to the inventory', () => {
+      inventory.addProduct(product1);
+      inventory.addProduct(product2);
+      expect(inventory.getProduct("A123")).toEqual(product1.getProductDetails());
+      expect(inventory.getProduct("B456")).toEqual(product2.getProductDetails());
+    });
 
-    // Act: Call the function 
-    const result = functionName(inputshere);
-
-    // Assert: Check if the result matches the expectation
-    expect(result).toBe(expectedOutput); 
+    test('throws error when adding a product with a duplicate ID', () => {
+      inventory.addProduct(product1);
+      expect(() => inventory.addProduct(product1)).toThrowError(`Product with ID ${product1.id} already exists.`);
+    });
   });
 
-  // Add more test cases as needed...
+  describe('Updating Product Quantities', () => {
+    test('can update the quantity of a product', () => {
+      inventory.addProduct(product1);
+      inventory.updateQuantity("A123", 75);
+      expect(inventory.getProduct("A123").quantity).toBe(75);
+    });
+
+    test('throws error when updating the quantity of a non-existent product', () => {
+      expect(() => inventory.updateQuantity("C789", 75)).toThrowError(`Product with ID C789 not found.`);
+    });
+  });
+
+  describe('Removing Products', () => {
+    test('can remove a product from the inventory', () => {
+      inventory.addProduct(product1);
+      inventory.addProduct(product2);
+      inventory.removeProduct("A123");
+      expect(() => inventory.getProduct("A123")).toThrowError(`Product with ID A123 not found.`);
+      expect(inventory.getProduct("B456")).toEqual(product2.getProductDetails());
+    });
+
+    test('throws error when removing a non-existent product', () => {
+      expect(() => inventory.removeProduct("C789")).toThrowError(`Product with ID C789 not found.`);
+    });
+  });
 });
