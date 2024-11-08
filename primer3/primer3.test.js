@@ -1,7 +1,7 @@
 // Import the necessary modules
 import name from './primer3.js'; // Adjust paths as needed
 
-// Making sure you are in the same folder, you can run this test file with: jest primer1.test.js
+// Making sure you are in the same folder, you can run this test file with: jest primer3.test.js
 
 // Describe a group of related tests
 describe('Primer 3 - Shuffling cards', () => {
