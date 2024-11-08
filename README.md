@@ -1,3 +1,6 @@
+# APA1 - Assignment 1 (40%)
+
+Instructions can be accessed in each primer folder.
 
 ## Primer instructions
 
