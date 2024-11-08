@@ -1,4 +1,4 @@
-# Primer Challenge 2: Playing Card Simulator MVP
+# Primer Challenge 2: Playing Card Shuffling simulator
 
 **Challenge:**
 
