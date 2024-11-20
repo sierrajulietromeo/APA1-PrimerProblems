@@ -37,7 +37,7 @@ const results = searchSocialMediaFeed(feed, searchTerm);
 * Use spaces consistently to separate operators and delimiters.
 * Be consistent when aligning braces.
 * Avoid deep nested conditionals.
-* Be mindful of single (long) lines of code containing multiple operations; consider ‘one line one instruction” unless readable.
+* Be mindful of single (long) lines of code containing multiple operations; consider 'one line one instruction' unless readable.
 * Keep variable lifetimes and scope as short and as small as possible.
 * Avoid multipurpose functions and variables.
 * Minimise forced type conversion, coercion or casting.
