@@ -5,6 +5,7 @@
 Create a NodeJS programme that simulates shuffling and dealing a deck of cards. The programme should:
 
 *   Create a standard 52-card deck.
+*   Validate inputs to ensure they are within acceptable ranges and throw errors for invalid inputs (e.g., non-positive integers, requesting more cards than available).
 *   Shuffle the deck.
 *   Deal cards to a specified number of players.
 *   Output the hands dealt as an array of arrays.
@@ -25,6 +26,10 @@ console.log(game);
 ### Additional Revisions:
 
 *   Update the program to support shuffling two decks together (104 cards).
+
+### Notes
+
+*   It will be looked upon favourably if you can comment on your shuffling technique and make reference to Big O time complexity in your screen recording.
 
 
 ### Adopt and use good programming standards
