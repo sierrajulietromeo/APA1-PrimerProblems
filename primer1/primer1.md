@@ -22,7 +22,7 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
 ### Constraints
 
 * Ensure you support upper and lowercase characters for C and F.
-* Ensure the program gracefully handles invalid inputs. 
+* Ensure the program gracefully handles invalid inputs (have a look at the error-handling tests in `primer1.test.js`).
 * Once complete, test and check for correctness (updating as necessary).
 
 ### Additional Revisions
