@@ -1,5 +1,5 @@
 // Import the necessary modules
-import { createLinkedList, searchSocialMediaFeed } from './primer3.js'; // Adjust paths as needed
+import { createLinkedList, searchSocialMediaFeed, Node } from './primer3OOP.js'; // Adjust paths as needed
 
 // Making sure you are in the same folder, you can run this test file with: jest primer3.test.js
 // To run some tests: jest -t "post" primers.test.js (runs all tests with "post" in their name)
