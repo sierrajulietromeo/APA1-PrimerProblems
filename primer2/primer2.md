@@ -26,6 +26,10 @@ console.log(game);
 
 *   Update the program to support shuffling two decks together (104 cards).
 
+### Notes
+
+*   It will be looked upon favourably if you can comment on your shuffling technique and make reference to Big O time complexity in your screen recording.
+
 
 ### Adopt and use good programming standards
 
