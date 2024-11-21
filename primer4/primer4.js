@@ -1,5 +1,5 @@
 import Product from './Product.js';
-import Inventory from './Inventory.js'; 
+import Inventory from './Inventory.js';
 
 
 // Sample usage
