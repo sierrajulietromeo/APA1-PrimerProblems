@@ -1,6 +1,5 @@
-import Product from './Product.js';
-import Inventory from './Inventory.js'; 
-
+import Product from "./Product.js";
+import Inventory from "./Inventory.js";
 
 // Sample usage
 const inventory = new Inventory();

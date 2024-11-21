@@ -18,8 +18,7 @@ describe('Inventory', () => {
     test('can add products to the inventory', () => {
       inventory.addProduct(product1);
       inventory.addProduct(product2);
-      expect(inventory.getProduct("A123")).toEqual(product1.getProductDetails());
-      expect(inventory.getProduct("B456")).toEqual(product2.getProductDetails());
+      expect(inventory.getNumOfItems()).toBe(2);
     });
 
     test('throws error when adding a product with a duplicate ID', () => {
@@ -51,6 +50,27 @@ describe('Inventory', () => {
 
     test('throws error when removing a non-existent product', () => {
       expect(() => inventory.removeProduct("C789")).toThrowError(`Product with ID C789 not found.`);
+    });
+  });
+
+  describe('Retrieving Product Details', () => {
+    test('can retrieve the details of products', () => {
+        inventory.addProduct(product1);
+        inventory.addProduct(product2);
+        
+        expect(inventory.getProduct("A123")).toEqual({
+            id: "A123",
+            name: "T-shirt",
+            price: 19.99,
+            quantity: 100
+        });
+
+        expect(inventory.getProduct("B456")).toEqual({
+            id: "B456",
+            name: "Jeans",
+            price: 49.99,
+            quantity: 50
+        });
     });
   });
 });
