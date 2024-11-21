@@ -20,6 +20,7 @@ The base code includes the following classes and methods:
     *   `updateQuantity(id, quantity)`
     *   `getProduct(id)`
     *   `removeProduct(id)`
+    *   `getNumOfItems()`
 
 *   **Product Class:**
     *   `getProductDetails()`
@@ -37,11 +38,8 @@ The base code includes the following classes and methods:
     *   Create subclasses for `Clothing` and `Electronics` that inherit from the `Product` class.
     *   Add the specific attributes to each subclass.
 
-2.  **Modify Hash Table:**
-    *   Ensure that the hash table in the `Inventory` class can store objects of different product types.
+2.  **Implement Polymorphic Functions:**
 
-3.  **Implement Polymorphic Functions:**
-    *   Modify the methods in the `Inventory` class (`addProduct`, `updateQuantity`, `getProduct`, `removeProduct`) to handle different product types seamlessly.
     *   Ensure that the `getProductDetails()` method is overridden in the subclasses to include the unique attributes.
 
 **Example Usage:**
@@ -68,7 +66,7 @@ console.log(retrievedProduct); // Should output the laptop details including bra
 ### Additional Considerations:
 
 1. Error Handling: Ensure that your methods handle errors gracefully (e.g., trying to add a product with a duplicate ID).
-1. Testing: Update `primer4.test.js` verify the functionality of your extended inventory management system.
+1. Testing: Update `primer4.test.js` to verify the functionality of your extended inventory management system.
 1. Code Quality: Adhere to the provided programming standards for clear, maintainable code.
 
 
