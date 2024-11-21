@@ -35,9 +35,10 @@ const temperatureConversion = (temperature, fromScale, toScale) => {
 };
 
 
-console.log(temperatureConversion(60.1, 'C', 'F'))
-console.log(temperatureConversion(60.1, 'C', 'C'))
-console.log(temperatureConversion(60.1, 'F', 'C'))
-console.log(temperatureConversion(-17.78, 'C', 'F'))
+// TESTING CODE
+// console.log(temperatureConversion(60.1, 'C', 'F'))
+// console.log(temperatureConversion(60.1, 'C', 'C'))
+// console.log(temperatureConversion(60.1, 'F', 'C'))
+// console.log(temperatureConversion(-17.78, 'C', 'F'))
 
 export default temperatureConversion;
