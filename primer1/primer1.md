@@ -2,19 +2,20 @@
 
 **Challenge:**
 
-Create a JavaScript function that converts temperatures between Fahrenheit and Celsius based on input arguments (starting temperature and conversion type).
+Create a JavaScript function that converts temperatures between Fahrenheit and Celsius based on input arguments (starting temperature, original scale, and desired scale).
 
 **Conversion Formulae:**
 
 * Celsius to Fahrenheit: 
-  * F = (C \* 9 / 5) + 32
+  * F = (C \* 9 / 5) + 32
 
 * Fahrenheit to Celsius: 
-  * C = (F - 32) \* 5 / 9
+  * C = (F - 32) \* 5 / 9
 
-### Example:
+### Examples:
 
-`temperatureConversion(60.1, "C")  --> 15.6111`   
+* `temperatureConversion(60.1, 'C', 'F')  --> 140.18`
+* `temperatureConversion(60.1, 'F', 'C')  --> 15.6111`   
 
 ### Constraints
 
@@ -24,15 +25,15 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
     - Temperature input is not a numeric value (e.g., strings that are not numeric, null, undefined)
     - Conversion type is not a valid temperature scale (not 'C' or 'F', case-insensitive)
   * Examples of invalid inputs that should trigger errors:
-    - `temperatureConversion('abc', 'C')`
-    - `temperatureConversion(null, 'C')`
-    - `temperatureConversion(undefined, 'C')`
-    - `temperatureConversion(32, 'B')`
-    - `temperatureConversion(0, 'X')`
+    - `temperatureConversion('abc', 'C', 'F')`
+    - `temperatureConversion(null, 'C', 'F')`
+    - `temperatureConversion(undefined, 'C', 'F')`
+    - `temperatureConversion(32, 'C', 'B')`
+    - `temperatureConversion(0, 'C', 'X')`
 
 * Supported conversion scales (case-insensitive):
-  * 'C' or 'c': Celsius
-  * 'F' or 'f': Fahrenheit
+  * 'C' or 'c': Celsius
+  * 'F' or 'f': Fahrenheit
 
 ### Additional Revisions
 
@@ -40,25 +41,26 @@ Extend the program to support Kelvin (K) conversions:
 
 **Kelvin Conversion Formulae:**
 * Celsius to Kelvin:
-  * K = C + 273.15
+  * K = C + 273.15
 
 * Fahrenheit to Kelvin:
-  * K = (F - 32) \* 5 / 9 + 273.15
+  * K = (F - 32) \* 5 / 9 + 273.15
 
 * Kelvin to Celsius:
-  * C = K - 273.15
+  * C = K - 273.15
 
 * Kelvin to Fahrenheit:
-  * F = (K - 273.15) \* 9 / 5 + 32
+  * F = (K - 273.15) \* 9 / 5 + 32
 
 **Updated Conversion Scale Requirements:**
 * Add support for 'K' or 'k' as a valid conversion type
 * Ensure the function can convert between all three temperature scales (Celsius, Fahrenheit, and Kelvin)
 
+
 ### Notes
 
 * Ensure to commit/push as appropriate.
-* Follow TDD. For this Primer, we have provided you with the tests. See them in  `primer1.test.js`
+* See the tests in  `primer1.test.js`
 * Refactor the program as you see fit following industry standard conventions.
 
 ### Adopt and use good programming standards
@@ -70,7 +72,7 @@ Extend the program to support Kelvin (K) conversions:
 * Use spaces consistently to separate operators and delimiters.
 * Be consistent when aligning braces.
 * Avoid deep nested conditionals.
-* Be mindful of single (long) lines of code containing multiple operations; consider 'one line one instruction" unless readable.
+* Be mindful of single (long) lines of code containing multiple operations; consider 'one line one instruction' unless readable.
 * Keep variable lifetimes and scope as short and as small as possible.
 * Avoid multipurpose functions and variables.
 * Minimise forced type conversion, coercion or casting.
