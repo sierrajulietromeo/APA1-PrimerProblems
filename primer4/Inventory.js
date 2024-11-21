@@ -34,6 +34,10 @@ class Inventory {
     }
     this.#products.delete(id);
   }
+
+  getNumOfItems() {
+    return this.#products.size;
+  }
 }
 
 export default Inventory;
