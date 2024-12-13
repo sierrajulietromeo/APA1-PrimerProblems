@@ -24,5 +24,5 @@ Instructions can be accessed in each primer folder.
 * **Fail:** The recording shows significant gaps in understanding and an inability to demonstrate basic competency in relation to the assignment requirements. 
 * **Pass:** The recording demonstrates basic understanding of the code and its functionality, and explains core concepts.
 * **Merit:** The recording shows a good understanding of the code, its functionality, and related concepts.  Explanations are clear and demonstrate problem-solving skills.
-* **Distinction:** The recording exhibits a deep understanding, critical thinking, and excellent communication skills. The code is analyzed critically, and insightful solutions are offered.
+* **Distinction:** The recording exhibits a deep understanding, critical thinking, and excellent communication skills. The code is analysed critically, and insightful solutions are offered.
 
