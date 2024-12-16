@@ -24,6 +24,7 @@ class Product {
     get quantity() {
       return this.#quantity;
     }
+    
     set quantity(newQuantity) {
       this.#quantity = newQuantity;
     }
