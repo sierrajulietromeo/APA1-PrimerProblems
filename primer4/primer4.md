@@ -65,9 +65,12 @@ console.log(retrievedProduct); // Should output the laptop details including bra
 
 ### Additional Considerations:
 
-1. Error Handling: Ensure that your methods handle errors gracefully (e.g., invalid quantities for example).
-1. Code Quality: Adhere to the provided programming standards for clear, maintainable code. 
-1. Testing: Add additional tests (in appropriate nested `describe` blocks) to `primer4.test.js` to verify the functionality of your extended inventory management system.
+1. Error Handling: Ensure that your methods handle errors gracefully (e.g., invalid quantities, incorrect datatypes etc.).
+2. Code Quality: Adhere to the provided programming standards for clear, maintainable code. 
+3. Testing: Add additional tests (in appropriate nested `describe` blocks) to `primer4.test.js` to verify the functionality of your extended inventory management system.
+4. Make `Product.js` an abstract Class so that Product objects cannot be instantiated. You can modify `primer4.test.js` as you require.
+5. Implement the Factory design pattern, and add your own testing code in `primer4.js`. You can modify `primer4.test.js` as you require.   
+
 
 
 ### Rubric for Primer 4
