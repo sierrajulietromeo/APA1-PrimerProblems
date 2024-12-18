@@ -2,8 +2,6 @@
 import Product from './Product.js';
 import Inventory from './Inventory.js';
 
-// Making sure you are in the same folder, you can run this test file with: jest primer4.test.js
-
 describe('Inventory', () => {
   let inventory;
   let product1, product2;
