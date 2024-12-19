@@ -2,7 +2,7 @@
 
 **Challenge:**
 
-Create a JavaScript function that converts temperatures between Fahrenheit and Celsius based on input arguments (starting temperature, original scale, and desired scale).
+Create a Python function that converts temperatures between Fahrenheit and Celsius based on input arguments (starting temperature, original scale, and desired scale).
 
 **Conversion Formulae:**
 
@@ -14,22 +14,21 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
 
 ### Examples:
 
-* `temperatureConversion(60.1, 'C', 'F')  --> 140.18`
-* `temperatureConversion(60.1, 'F', 'C')  --> 15.6111`   
+* `temperature_conversion(60.1, 'C', 'F')  --> 140.18`
+* `temperature_conversion(60.1, 'F', 'C')  --> 15.6111`   
 
 ### Constraints
 
 * Ensure you support upper and lowercase characters for C and F.
 * **Error Handling Requirements:**
-  * The function MUST throw an error when:
-    - Temperature input is not a numeric value (e.g., strings that are not numeric, null, undefined)
+  * The function MUST raise a `ValueError` when:
+    - Temperature input is not a numeric value (e.g., strings that are not numeric, `None`)
     - Conversion type is not a valid temperature scale (not 'C' or 'F', case-insensitive)
   * Examples of invalid inputs that should trigger errors:
-    - `temperatureConversion('abc', 'C', 'F')`
-    - `temperatureConversion(null, 'C', 'F')`
-    - `temperatureConversion(undefined, 'C', 'F')`
-    - `temperatureConversion(32, 'C', 'B')`
-    - `temperatureConversion(0, 'C', 'X')`
+    - `temperature_conversion('abc', 'C', 'F')`
+    - `temperature_conversion(None, 'C', 'F')` 
+    - `temperature_conversion(32, 'C', 'B')`
+    - `temperature_conversion(0, 'C', 'X')`
 
 * Supported conversion scales (case-insensitive):
   * 'C' or 'c': Celsius
@@ -60,7 +59,7 @@ Extend the program to support Kelvin (K) conversions:
 ### Notes
 
 * Ensure to commit/push as appropriate.
-* See the tests in  `primer1.test.js`
+* See the tests in  `test_primer1.py`
 * Refactor the program as you see fit following industry standard conventions.
 
 ### Adopt and use good programming standards
