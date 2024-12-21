@@ -2,25 +2,25 @@
 
 **Challenge:**
 
-Create a NodeJS programme that simulates shuffling and dealing a deck of cards. The programme should:
+Create a Python program that simulates shuffling and dealing a deck of cards. The program should:
 
 *   Create a standard 52-card deck.
 *   Validate inputs to ensure they are within acceptable ranges and throw errors for invalid inputs (e.g., non-positive integers, requesting more cards than available).
 *   Shuffle the deck.
 *   Deal cards to a specified number of players.
-*   Output the hands dealt as an array of arrays.
+*   Output the hands dealt as an list of lists.
 
 **Example:**
 
-```js
-const game = shuffleAndDeal(4, 5);
-console.log(game);
+```python
+game = shuffle_and_deal(4, 5)
+print(game)
 [
-  ["Ace of Spades", "3 of Clubs", "7 of Diamonds", "Jack of Hearts", "Queen of Spades"],
-  ["2 of Diamonds", "5 of Hearts", "6 of Clubs", "9 of Spades", "King of Diamonds"],
-  ["4 of Hearts", "8 of Clubs", "10 of Spades", "Jack of Diamonds", "Queen of Clubs"],
-  ["Ace of Clubs", "3 of Diamonds", "5 of Spades", "7 of Hearts", "10 of Clubs"]
-];
+    ["Ace of Spades", "3 of Clubs", "7 of Diamonds", "Jack of Hearts", "Queen of Spades"],
+    ["2 of Diamonds", "5 of Hearts", "6 of Clubs", "9 of Spades", "King of Diamonds"],
+    ["4 of Hearts", "8 of Clubs", "10 of Spades", "Jack of Diamonds", "Queen of Clubs"],
+    ["Ace of Clubs", "3 of Diamonds", "5 of Spades", "7 of Hearts", "10 of Clubs"]
+]
 ```
 
 ### Additional Revisions:
