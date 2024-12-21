@@ -30,6 +30,8 @@ print(game)
 ### Notes
 
 *   It will be looked upon favourably if you can comment on your shuffling technique and make reference to Big O time complexity in your screen recording.
+* You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
+* Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible. These can be highlighted in your screen recording.
 
 
 ### Adopt and use good programming standards

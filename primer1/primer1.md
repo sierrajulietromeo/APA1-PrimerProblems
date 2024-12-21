@@ -61,6 +61,7 @@ Extend the program to support Kelvin (K) conversions:
 * Ensure to commit/push as appropriate.
 * See the tests in  `test_primer1.py`
 * Refactor the program as you see fit following industry standard conventions.
+* You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
 
 ### Adopt and use good programming standards
 
