@@ -8,7 +8,7 @@ Create a JavaScript function that converts temperatures between Fahrenheit and C
 
 * Celsius to Fahrenheit: 
   * F = (C \* 9 / 5) + 32
-
+* Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible. These can be highlighted in your screen recording.
 * Fahrenheit to Celsius: 
   * C = (F - 32) \* 5 / 9
 
@@ -62,6 +62,7 @@ Extend the program to support Kelvin (K) conversions:
 * Ensure to commit/push as appropriate.
 * See the tests in  `primer1.test.js`
 * Refactor the program as you see fit following industry standard conventions.
+* You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
 
 ### Adopt and use good programming standards
 

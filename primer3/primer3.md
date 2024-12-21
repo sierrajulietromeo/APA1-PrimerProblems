@@ -28,6 +28,11 @@ const results = searchSocialMediaFeed(feed, searchTerm);
 // [{ text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' }]
 ```
 
+### Notes
+
+* You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
+* Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible. These can be highlighted in your screen recording.
+
 ### Adopt and use good programming standards
 
 * Eliminate or minimise code duplication & any unnecessary redundancy.
