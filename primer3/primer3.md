@@ -6,7 +6,7 @@ Imagine you're building a social media application where users can post short me
 
 **Challenge:**
 
-Create a JavaScript programme that searches for posts in a social media feed represented as a linked list. The programme should:
+Create a Python program that searches for posts in a social media feed represented as a linked list. The programme should:
 
 *   Construct a linked list of posts, where each node has properties like `text`, `timestamp`, and `author`.
 *   Implement a search function that takes a keyword or phrase as input and returns a list of all posts containing that keyword/phrase in their `text`.
@@ -14,18 +14,18 @@ Create a JavaScript programme that searches for posts in a social media feed rep
 
 **Example:**
 
-```javascript
-const feed = createLinkedList([
-  { text: 'Hello world!', timestamp: '2024-03-11 10:00:00', author: 'Alice' },
-  { text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' },
-  { text: 'Just finished a fantastic game.', timestamp: '2024-03-11 12:15:00', author: 'Aqil' },
-]);
+```python
+feed = create_linked_list([
+    {"text": "Hello world!", "timestamp": "2024-03-11 10:00:00", "author": "Alice"},
+    {"text": "Having a great day!", "timestamp": "2024-03-11 11:30:00", "author": "Bob"},
+    {"text": "Just finished a fantastic game.", "timestamp": "2024-03-11 12:15:00", "author": "Aqil"},
+])
 
-const searchTerm = 'great';
-const results = searchSocialMediaFeed(feed, searchTerm);
+search_term = "great"
+results = search_social_media_feed(feed, search_term)
 
-// Output:
-// [{ text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' }]
+# Output:
+# [{"text": "Having a great day!", "timestamp": "2024-03-11 11:30:00", "author": "Bob"}]
 ```
 
 ### Adopt and use good programming standards
