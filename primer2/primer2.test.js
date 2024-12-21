@@ -1,7 +1,3 @@
-// Making sure you are in the same folder, you can run this test file with: jest primer2.test.js
-// To run some tests: jest -t "cards" primer2.test.js (runs all tests with "cards" in their name)
-// To run one specific test, e.g. jest -t "should return the correct number of hands" primer2.test.js
-
 import shuffleAndDeal  from './primer2.js';
 
 describe('Card Shuffler', () => {

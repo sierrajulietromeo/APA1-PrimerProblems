@@ -1,7 +1,3 @@
-// Making sure you are in the same folder, you can run this test file with: jest primer2.test.js
-// To run some tests: jest -t "Shuffle" primer2.test.js (runs all tests with "Shuffle" in their name)
-// To run one specific test, e.g. jest -t "each card should be a valid card string format" primer2.test.js
-
 
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.

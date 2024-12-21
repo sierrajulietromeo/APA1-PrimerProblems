@@ -1,11 +1,6 @@
 // Import the necessary modules
 import { createLinkedList, searchSocialMediaFeed } from './primer3.js'; // Adjust paths as needed
 
-// Making sure you are in the same folder, you can run this test file with: jest primer3.test.js
-// To run some tests: jest -t "post" primers.test.js (runs all tests with "post" in their name)
-// To run one specific test, e.g. jest -t "should handle long post content" primer3.test.js
-
-
 describe('Social Media Feed Search', () => {
   describe('Linked List Creation', () => {
     test('should create an empty linked list', () => {
