@@ -16,16 +16,16 @@ Extend the provided inventory management program to support different product ty
 The base code includes the following classes and methods:
 
 *   **Inventory Class:**
-    *   `addProduct(product)`
-    *   `updateQuantity(id, quantity)`
-    *   `getProduct(id)`
-    *   `removeProduct(id)`
-    *   `getNumOfItems()`
+    *  add_product(product)
+    *  update_quantity(id, quantity)
+    *  get_product(id)
+    *  remove_product(id)
+    *  get_num_of_items()
 
 *   **Product Class:**
-    *   `getProductDetails()`
+    *   `get_product_details()`
 
-`primer4.test.js` includes the current tests written for this code, and it currently passes them all.
+`test_primer4.py` includes the current tests written for this code, and it currently passes them all.
 
 ### UML Class Diagram (Base Code)
 
@@ -40,7 +40,7 @@ The base code includes the following classes and methods:
 
 2.  **Implement Polymorphic Functions:**
 
-    *   Ensure that the `getProductDetails()` method is overridden in the subclasses to include the unique attributes.
+    *   Ensure that the `get_product_details()` method is overridden in the subclasses to include the unique attributes.
 
 **Example Usage:**
 
