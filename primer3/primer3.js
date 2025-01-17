@@ -25,4 +25,4 @@ function searchSocialMediaFeed(feed, keyword) {
 // ADDITIONAL TODO - The suggested functions above can be refactored into multiple functions if you think appropriate.
 
 
-export default {createLinkedList, searchSocialMediaFeed};
+export {createLinkedList, searchSocialMediaFeed};
