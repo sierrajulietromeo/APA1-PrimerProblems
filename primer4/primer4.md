@@ -31,6 +31,8 @@ The base code includes the following classes and methods:
 
 ![UML Class Diagram of original system](images/umlClassDiagram_original.png)
 
+Members marked `«get»` and `«set»` are JavaScript getters and setters, so you use them like properties: `product.id` and `product.quantity = 50`, not `product.getId()`. The private fields (`-id` and so on) are JavaScript private fields such as `#id`. The `.mmd` files in `images` are the Mermaid source for both diagrams.
+
 
 **Tasks:**
 
