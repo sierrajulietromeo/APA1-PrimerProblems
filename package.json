@@ -3,9 +3,12 @@
     "test": "jest"
   },
   "type": "module",
+  "dependencies": {
+    "priorityqueuejs": "^2.0.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
-    "@babel/core": "^7.25.2",
+    "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.25.3",
     "jest": "^29.7.0"
   }
