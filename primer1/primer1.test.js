@@ -1,127 +1,201 @@
-import temperatureConversion from './primer1.js'; // Adjust paths as needed
+import {
+  createHelpdesk,
+  addTicket,
+  serveNextTicket,
+  peekNextTicket,
+  getQueueLength,
+  undoLastAction,
+} from './primer1.js';
 
-// To run some tests: npm test -- -t 'temperatureC' (runs all tests within the 'temperatureConversion' describe block (uses pattern matching))
-// To run one specific test, e.g. npm test -- -t 'should convert positive F' (runs the 'should convert positive Fahrenheit to Celsius' test)
+// To run only this primer's tests: npm test -- primer1
+// To run one describe block, e.g.: npm test -- primer1 -t 'Undo'
 
-describe('temperatureConversion', () => {
-  describe('Fahrenheit to Celsius', () => {
-    test('should convert positive Fahrenheit to Celsius', () => {
-      expect(temperatureConversion(32, 'F', 'C')).toBeCloseTo(0, 2);
-      expect(temperatureConversion(50, 'F', 'C')).toBeCloseTo(10, 2);
-      expect(temperatureConversion(77, 'F', 'C')).toBeCloseTo(25, 2);
-      expect(temperatureConversion(212, 'F', 'C')).toBeCloseTo(100, 2);
-            
+const ticket = (id, priority) => {
+  const t = { id, customer: `Customer ${id}`, issue: `Issue ${id}` };
+  if (priority !== undefined) {
+    t.priority = priority;
+  }
+  return t;
+};
+
+describe('Help desk ticket queue', () => {
+  let helpdesk;
+
+  beforeEach(() => {
+    helpdesk = createHelpdesk();
+  });
+
+  describe('Adding tickets', () => {
+    test('a new help desk has no tickets waiting', () => {
+      expect(getQueueLength(helpdesk)).toBe(0);
+      expect(peekNextTicket(helpdesk)).toBeNull();
     });
 
-    test('should convert negative Fahrenheit to Celsius', () => {
-      expect(temperatureConversion(-40, 'F', 'C')).toBeCloseTo(-40, 2);
-      expect(temperatureConversion(-20, 'F', 'C')).toBeCloseTo(-28.89, 1);
-      expect(temperatureConversion(0, 'F', 'C')).toBeCloseTo(-17.78, 1);
+    test('addTicket returns the number of tickets waiting', () => {
+      expect(addTicket(helpdesk, ticket('T001'))).toBe(1);
+      expect(addTicket(helpdesk, ticket('T002'))).toBe(2);
+      expect(getQueueLength(helpdesk)).toBe(2);
     });
 
-    test('should handle Fahrenheit input as a string', () => {
-      expect(temperatureConversion('32', 'F', 'C')).toBeCloseTo(0, 2);
-      expect(temperatureConversion('50', 'F', 'C')).toBeCloseTo(10, 2);
-      expect(temperatureConversion('77', 'F', 'C')).toBeCloseTo(25, 2);
-    });
-
-    test('should handle case-insensitive Celsius input', () => {
-      expect(temperatureConversion(32, 'F', 'c')).toBeCloseTo(0, 2);
-      expect(temperatureConversion(50, 'F', 'C')).toBeCloseTo(10, 2);
-      expect(temperatureConversion(77, 'F', 'c')).toBeCloseTo(25, 2);
+    test('each help desk keeps its own tickets', () => {
+      const other = createHelpdesk();
+      addTicket(helpdesk, ticket('T001'));
+      expect(getQueueLength(other)).toBe(0);
     });
   });
 
-  describe('Celsius to Fahrenheit', () => {
-    test('should convert positive Celsius to Fahrenheit', () => {
-      expect(temperatureConversion(0, 'C', 'F')).toBeCloseTo(32, 2);
-      expect(temperatureConversion(10, 'C', 'F')).toBeCloseTo(50, 2);
-      expect(temperatureConversion(25, 'C', 'F')).toBeCloseTo(77, 2);
-      expect(temperatureConversion(100, 'C', 'F')).toBeCloseTo(212, 2);
+  describe('Serving tickets (first in, first out)', () => {
+    test('serves tickets in the order they arrived', () => {
+      addTicket(helpdesk, ticket('T001'));
+      addTicket(helpdesk, ticket('T002'));
+      addTicket(helpdesk, ticket('T003'));
+
+      expect(serveNextTicket(helpdesk).id).toBe('T001');
+      expect(serveNextTicket(helpdesk).id).toBe('T002');
+      expect(serveNextTicket(helpdesk).id).toBe('T003');
+      expect(getQueueLength(helpdesk)).toBe(0);
     });
 
-    test('should convert negative Celsius to Fahrenheit', () => {
-      expect(temperatureConversion(-40, 'C', 'F')).toBeCloseTo(-40, 2);
-      expect(temperatureConversion(-20, 'C', 'F')).toBeCloseTo(-4, 2);
-      expect(temperatureConversion(-17.78, 'C', 'F')).toBeCloseTo(0, 1);
+    test('serving returns the whole ticket', () => {
+      addTicket(helpdesk, { id: 'T001', customer: 'Priya', issue: 'Cannot log in' });
+      expect(serveNextTicket(helpdesk)).toEqual({ id: 'T001', customer: 'Priya', issue: 'Cannot log in' });
     });
 
-    test('should handle Celsius input as a string', () => {
-      expect(temperatureConversion('0', 'C', 'F')).toBeCloseTo(32, 2);
-      expect(temperatureConversion('10', 'C', 'F')).toBeCloseTo(50, 2);
-      expect(temperatureConversion('25', 'C', 'F')).toBeCloseTo(77, 2);
+    test('peek shows the next ticket without removing it', () => {
+      addTicket(helpdesk, ticket('T001'));
+      addTicket(helpdesk, ticket('T002'));
+
+      expect(peekNextTicket(helpdesk).id).toBe('T001');
+      expect(getQueueLength(helpdesk)).toBe(2);
     });
 
-    test('should handle case-insensitive Fahrenheit input', () => {
-      expect(temperatureConversion(0, 'C', 'f')).toBeCloseTo(32, 2);
-      expect(temperatureConversion(10, 'C', 'F')).toBeCloseTo(50, 2);
-      expect(temperatureConversion(25, 'C', 'f')).toBeCloseTo(77, 2);
+    test('a served ticket id can be added again later', () => {
+      addTicket(helpdesk, ticket('T001'));
+      serveNextTicket(helpdesk);
+      expect(() => addTicket(helpdesk, ticket('T001'))).not.toThrow();
     });
   });
-  describe('Same scale conversions', () => {
-    test('should handle Celsius to Celsius conversion', () => {
-      expect(temperatureConversion(0, 'C', 'C')).toBe(0);
-      expect(temperatureConversion(100, 'C', 'C')).toBe(100);
-      expect(temperatureConversion(-40, 'C', 'C')).toBe(-40);
+
+  describe('Undo (last in, first out)', () => {
+    test('undoing an add removes that ticket', () => {
+      addTicket(helpdesk, ticket('T001'));
+      addTicket(helpdesk, ticket('T002'));
+
+      expect(undoLastAction(helpdesk).id).toBe('T002');
+      expect(getQueueLength(helpdesk)).toBe(1);
+      expect(peekNextTicket(helpdesk).id).toBe('T001');
     });
 
-    test('should handle Fahrenheit to Fahrenheit conversion', () => {
-      expect(temperatureConversion(32, 'F', 'F')).toBe(32);
-      expect(temperatureConversion(212, 'F', 'F')).toBe(212);
-      expect(temperatureConversion(-40, 'F', 'F')).toBe(-40);
-    });  
+    test('undoing a serve puts the ticket back at the front', () => {
+      addTicket(helpdesk, ticket('T001'));
+      addTicket(helpdesk, ticket('T002'));
+      serveNextTicket(helpdesk);
+
+      expect(undoLastAction(helpdesk).id).toBe('T001');
+      expect(getQueueLength(helpdesk)).toBe(2);
+      expect(serveNextTicket(helpdesk).id).toBe('T001');
+    });
+
+    test('several undos reverse actions in the opposite order', () => {
+      addTicket(helpdesk, ticket('T001'));
+      addTicket(helpdesk, ticket('T002'));
+      serveNextTicket(helpdesk);
+      addTicket(helpdesk, ticket('T003'));
+
+      expect(undoLastAction(helpdesk).id).toBe('T003');
+      expect(undoLastAction(helpdesk).id).toBe('T001');
+      expect(undoLastAction(helpdesk).id).toBe('T002');
+      expect(getQueueLength(helpdesk)).toBe(1);
+      expect(peekNextTicket(helpdesk).id).toBe('T001');
+    });
   });
 
   describe('Error handling', () => {
-    test('should throw an error for non-numeric temperature input', () => {
-      expect(() => temperatureConversion('abc', 'C', 'F')).toThrow();
-      expect(() => temperatureConversion(null, 'C', 'F')).toThrow();
-      expect(() => temperatureConversion(undefined, 'C', 'F')).toThrow();
+    test('throws when serving from an empty queue', () => {
+      expect(() => serveNextTicket(helpdesk)).toThrow();
     });
 
-    test('should throw an error for invalid conversion type', () => {
-      expect(() => temperatureConversion(32, 'C', 'B')).toThrow();
-      expect(() => temperatureConversion(0, 'C', 'X')).toThrow();
+    test('throws when there is nothing to undo', () => {
+      expect(() => undoLastAction(helpdesk)).toThrow();
+    });
+
+    test('throws for a missing or non-object ticket', () => {
+      expect(() => addTicket(helpdesk)).toThrow();
+      expect(() => addTicket(helpdesk, null)).toThrow();
+      expect(() => addTicket(helpdesk, 'T001')).toThrow();
+    });
+
+    test('throws for missing, empty or non-string fields', () => {
+      expect(() => addTicket(helpdesk, { customer: 'Priya', issue: 'Cannot log in' })).toThrow();
+      expect(() => addTicket(helpdesk, { id: 'T001', issue: 'Cannot log in' })).toThrow();
+      expect(() => addTicket(helpdesk, { id: 'T001', customer: 'Priya' })).toThrow();
+      expect(() => addTicket(helpdesk, { id: '', customer: 'Priya', issue: 'Cannot log in' })).toThrow();
+      expect(() => addTicket(helpdesk, { id: 1, customer: 'Priya', issue: 'Cannot log in' })).toThrow();
+    });
+
+    test('throws for a duplicate id still waiting in the queue', () => {
+      addTicket(helpdesk, ticket('T001'));
+      expect(() => addTicket(helpdesk, ticket('T001'))).toThrow();
+    });
+
+    test('a failed add does not change the queue or the undo history', () => {
+      addTicket(helpdesk, ticket('T001'));
+      expect(() => addTicket(helpdesk, ticket('T001'))).toThrow();
+      expect(getQueueLength(helpdesk)).toBe(1);
+      expect(undoLastAction(helpdesk).id).toBe('T001');
+      expect(() => undoLastAction(helpdesk)).toThrow();
     });
   });
 
-  describe('Kelvin support', () => { 
-    test('should convert Celsius to Kelvin', () => {
-      expect(temperatureConversion(0, 'C', 'K')).toBeCloseTo(273.15, 2);
-      expect(temperatureConversion(10, 'C', 'K')).toBeCloseTo(283.15, 2);
-      expect(temperatureConversion(25, 'C', 'K')).toBeCloseTo(298.15, 2);
-      expect(temperatureConversion(100, 'C', 'K')).toBeCloseTo(373.15, 2);
+  describe('Additional revisions: urgent tickets', () => {
+    test('urgent tickets are served before normal tickets', () => {
+      addTicket(helpdesk, ticket('N1'));
+      addTicket(helpdesk, ticket('U1', 'urgent'));
+      addTicket(helpdesk, ticket('N2', 'normal'));
+
+      expect(peekNextTicket(helpdesk).id).toBe('U1');
+      expect(serveNextTicket(helpdesk).id).toBe('U1');
+      expect(serveNextTicket(helpdesk).id).toBe('N1');
+      expect(serveNextTicket(helpdesk).id).toBe('N2');
     });
 
-    test('should convert Fahrenheit to Kelvin', () => {
-      expect(temperatureConversion(32, 'F', 'K')).toBeCloseTo(273.15, 2);
-      expect(temperatureConversion(50, 'F', 'K')).toBeCloseTo(283.15, 2);
-      expect(temperatureConversion(77, 'F', 'K')).toBeCloseTo(298.15, 2);
-      expect(temperatureConversion(212, 'F', 'K')).toBeCloseTo(373.15, 2);
+    test('tickets of the same priority are served first in, first out', () => {
+      addTicket(helpdesk, ticket('U1', 'urgent'));
+      addTicket(helpdesk, ticket('N1'));
+      addTicket(helpdesk, ticket('U2', 'urgent'));
+
+      expect(serveNextTicket(helpdesk).id).toBe('U1');
+      expect(serveNextTicket(helpdesk).id).toBe('U2');
+      expect(serveNextTicket(helpdesk).id).toBe('N1');
     });
 
-    test('should convert Kelvin to Celsius', () => {
-      expect(temperatureConversion(273.15, 'K', 'C')).toBeCloseTo(0, 2);
-      expect(temperatureConversion(283.15, 'K', 'C')).toBeCloseTo(10, 2);
-      expect(temperatureConversion(373.15, 'K', 'C')).toBeCloseTo(100, 2);
+    test('undoing a serve puts a ticket back at the front of its own priority', () => {
+      addTicket(helpdesk, ticket('N1'));
+      addTicket(helpdesk, ticket('U1', 'urgent'));
+      addTicket(helpdesk, ticket('U2', 'urgent'));
+
+      expect(serveNextTicket(helpdesk).id).toBe('U1');
+      expect(undoLastAction(helpdesk).id).toBe('U1');
+      expect(serveNextTicket(helpdesk).id).toBe('U1');
+      expect(serveNextTicket(helpdesk).id).toBe('U2');
+      expect(serveNextTicket(helpdesk).id).toBe('N1');
     });
 
-    test('should convert Kelvin to Fahrenheit', () => {
-      expect(temperatureConversion(273.15, 'K', 'F')).toBeCloseTo(32, 2);
-      expect(temperatureConversion(283.15, 'K', 'F')).toBeCloseTo(50, 2);
-      expect(temperatureConversion(373.15, 'K', 'F')).toBeCloseTo(212, 2);
+    test('undoing an add removes an urgent ticket', () => {
+      addTicket(helpdesk, ticket('N1'));
+      addTicket(helpdesk, ticket('U1', 'urgent'));
+
+      expect(undoLastAction(helpdesk).id).toBe('U1');
+      expect(peekNextTicket(helpdesk).id).toBe('N1');
     });
 
-    test('should handle case-insensitive Kelvin input', () => {
-      expect(temperatureConversion(0, 'C', 'k')).toBeCloseTo(273.15, 2);
-      expect(temperatureConversion(10, 'C', 'K')).toBeCloseTo(283.15, 2);
-      expect(temperatureConversion(25, 'C', 'k')).toBeCloseTo(298.15, 2);
+    test('duplicate ids are rejected across priorities', () => {
+      addTicket(helpdesk, ticket('T001', 'urgent'));
+      expect(() => addTicket(helpdesk, ticket('T001'))).toThrow();
     });
-    
-    test('should handle Kelvin to Kelvin conversion', () => {
-      expect(temperatureConversion(273.15, 'K', 'K')).toBe(273.15);
-      expect(temperatureConversion(300, 'K', 'K')).toBe(300);
-      expect(temperatureConversion(0, 'K', 'K')).toBe(0); 
+
+    test('throws for an unknown priority', () => {
+      expect(() => addTicket(helpdesk, ticket('T001', 'high'))).toThrow();
     });
   });
 });

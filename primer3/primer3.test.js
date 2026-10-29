@@ -1,5 +1,5 @@
 // Import the necessary modules
-import { createLinkedList, searchSocialMediaFeed } from './primer3.js'; // Adjust paths as needed
+import { createLinkedList, searchSocialMediaFeed } from './primer3.js';
 
 describe('Social Media Feed Search', () => {
   describe('Linked List Creation', () => {
@@ -73,6 +73,43 @@ describe('Social Media Feed Search', () => {
     test('should return empty array for no matches', () => {
       const results = searchSocialMediaFeed(feed, 'nonexistent');
       expect(results).toEqual([]);
+    });
+  });
+
+  describe('Additional revisions: newest first', () => {
+    test('should return results sorted newest first', () => {
+      const feed = createLinkedList([
+        { text: 'Morning coffee', timestamp: '2024-03-11 09:00:00', author: 'Alice' },
+        { text: 'Evening coffee', timestamp: '2024-03-11 19:30:00', author: 'Bob' },
+        { text: 'Coffee yesterday', timestamp: '2024-03-10 12:00:00', author: 'Aqil' },
+        { text: 'Lunchtime coffee', timestamp: '2024-03-11 12:45:00', author: 'Diana' },
+      ]);
+
+      const authors = searchSocialMediaFeed(feed, 'coffee').map((post) => post.author);
+      expect(authors).toEqual(['Bob', 'Diana', 'Alice', 'Aqil']);
+    });
+
+    test('should keep feed order for posts with the same timestamp', () => {
+      const feed = createLinkedList([
+        { text: 'First tea', timestamp: '2024-03-11 10:00:00', author: 'Alice' },
+        { text: 'Second tea', timestamp: '2024-03-11 10:00:00', author: 'Bob' },
+        { text: 'Later tea', timestamp: '2024-03-11 11:00:00', author: 'Diana' },
+      ]);
+
+      const authors = searchSocialMediaFeed(feed, 'tea').map((post) => post.author);
+      expect(authors).toEqual(['Diana', 'Alice', 'Bob']);
+    });
+
+    test('should not change the order of the feed itself', () => {
+      const posts = [
+        { text: 'Old news', timestamp: '2024-03-10 10:00:00', author: 'Alice' },
+        { text: 'New news', timestamp: '2024-03-11 10:00:00', author: 'Bob' },
+      ];
+      const feed = createLinkedList(posts);
+      searchSocialMediaFeed(feed, 'news');
+
+      expect(feed.data).toEqual(posts[0]);
+      expect(feed.next.data).toEqual(posts[1]);
     });
   });
 

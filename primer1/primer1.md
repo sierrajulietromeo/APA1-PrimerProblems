@@ -1,91 +1,71 @@
-# Primer Challenge 1: Fahrenheit-Celsius Conversion
+# Primer Challenge 1: Help Desk Ticket Queue
+
+**Scenario:**
+
+A small IT help desk handles support tickets in the order they arrive: the first ticket in is the first ticket served. Staff sometimes make mistakes, so they need to be able to undo their last action.
 
 **Challenge:**
 
-Create a JavaScript function that converts temperatures between Fahrenheit and Celsius based on input arguments (starting temperature, original scale, and desired scale).
+Write a set of JavaScript functions that manage a help desk's tickets using two linear data structures:
 
-**Conversion Formulae:**
+* a **queue** (first in, first out) for tickets waiting to be served
+* a **stack** (last in, first out) recording each action, so the most recent action can be undone
 
-* Celsius to Fahrenheit: 
-  * F = (C \* 9 / 5) + 32
-* Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible. These can be highlighted in your screen recording.
-* Fahrenheit to Celsius: 
-  * C = (F - 32) \* 5 / 9
+Export these functions from `primer1.js`:
 
-### Examples:
+| Function | What it does |
+|---|---|
+| `createHelpdesk()` | Returns a new, empty help desk. How you store its data inside is up to you. |
+| `addTicket(helpdesk, ticket)` | Adds a ticket to the back of the queue and returns the number of tickets waiting. |
+| `serveNextTicket(helpdesk)` | Removes and returns the ticket at the front of the queue. |
+| `peekNextTicket(helpdesk)` | Returns the ticket at the front of the queue without removing it, or `null` if the queue is empty. |
+| `getQueueLength(helpdesk)` | Returns the number of tickets waiting. |
+| `undoLastAction(helpdesk)` | Reverses the most recent add or serve, and returns the ticket it affected. |
 
-* `temperatureConversion(60.1, 'C', 'F')  --> 140.18`
-* `temperatureConversion(60.1, 'F', 'C')  --> 15.6111`   
+A ticket is an object such as:
+
+```javascript
+{ id: 'T001', customer: 'Priya', issue: 'Cannot log in' }
+```
+
+### Example
+
+```javascript
+const helpdesk = createHelpdesk();
+
+addTicket(helpdesk, { id: 'T001', customer: 'Priya', issue: 'Cannot log in' });   // 1
+addTicket(helpdesk, { id: 'T002', customer: 'Tom', issue: 'Printer jammed' });    // 2
+
+serveNextTicket(helpdesk);   // { id: 'T001', ... } (first in, first out)
+undoLastAction(helpdesk);    // { id: 'T001', ... } T001 goes back to the front
+peekNextTicket(helpdesk);    // { id: 'T001', ... }
+getQueueLength(helpdesk);    // 2
+```
 
 ### Constraints
 
-* Ensure you support upper and lowercase characters for C and F.
-* **Error Handling Requirements:**
-  * The function MUST throw an error when:
-    - Temperature input is not a numeric value (e.g., strings that are not numeric, null, undefined)
-    - Conversion type is not a valid temperature scale (not 'C' or 'F', case-insensitive)
-  * Examples of invalid inputs that should trigger errors:
-    - `temperatureConversion('abc', 'C', 'F')`
-    - `temperatureConversion(null, 'C', 'F')`
-    - `temperatureConversion(undefined, 'C', 'F')`
-    - `temperatureConversion(32, 'C', 'B')`
-    - `temperatureConversion(0, 'C', 'X')`
-
-* Supported conversion scales (case-insensitive):
-  * 'C' or 'c': Celsius
-  * 'F' or 'f': Fahrenheit
+* `addTicket` MUST throw an error when:
+  * the ticket is missing, or is not an object
+  * `id`, `customer` or `issue` is missing, is not a string, or is an empty string
+  * a ticket with the same `id` is already waiting in the queue
+* `serveNextTicket` MUST throw an error when there are no tickets to serve.
+* `undoLastAction` MUST throw an error when there is nothing to undo.
+* Undoing an add removes that ticket from the queue. Undoing a serve puts that ticket back at the front of the queue.
+* Several undos in a row reverse actions in the opposite order to the one in which they happened.
 
 ### Additional Revisions
 
-Extend the program to support Kelvin (K) conversions:
+Extend the program to support **urgent** tickets:
 
-**Kelvin Conversion Formulae:**
-* Celsius to Kelvin:
-  * K = C + 273.15
-
-* Fahrenheit to Kelvin:
-  * K = (F - 32) \* 5 / 9 + 273.15
-
-* Kelvin to Celsius:
-  * C = K - 273.15
-
-* Kelvin to Fahrenheit:
-  * F = (K - 273.15) \* 9 / 5 + 32
-
-**Updated Conversion Scale Requirements:**
-* Add support for 'K' or 'k' as a valid conversion type
-* Ensure the function can convert between all three temperature scales (Celsius, Fahrenheit, and Kelvin)
-
+* A ticket may have an optional `priority` property of `'urgent'` or `'normal'`. If it is missing, the ticket is `'normal'`. Any other value MUST throw an error.
+* Urgent tickets are always served before normal tickets.
+* Within the same priority, tickets are still served first in, first out.
+* Undo must still work correctly: undoing a serve puts the ticket back at the front of the tickets with its own priority.
 
 ### Notes
 
-* Ensure to commit/push as appropriate.
-* See the tests in  `primer1.test.js`
-* Refactor the program as you see fit following industry standard conventions.
-* You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
-
-### Adopt and use good programming standards
-
-* Eliminate or minimise code duplication & any unnecessary redundancy.
-* Strive for simplicity in logic and flow.
-* Use a consistent naming convention for functions, variables, objects, etc to provide clear contextual value, improved comprehension and quick readability.
-* Use appropriate and consistent indentation, logical grouping and spaced blocks within your codebases; adopt tabs or a set number of spaces (ideally tabs) for indenting.
-* Use spaces consistently to separate operators and delimiters.
-* Be consistent when aligning braces.
-* Avoid deep nested conditionals.
-* Be mindful of single (long) lines of code containing multiple operations; consider 'one line one instruction' unless readable.
-* Keep variable lifetimes and scope as short and as small as possible.
-* Avoid multipurpose functions and variables.
-* Minimise forced type conversion, coercion or casting.
-* Know and test your code: adopt a personal and rigorous testing strategy.
-* Test early and often, fail fast and resolve effectively.
-* Ideally the code should speak for itself. Use comments only when necessary.
-
-
-### Rubrics for advanced programming challenges portfolio
-
-|Category|Fail (<40%)|Pass (40-59%)|Merit (60-69%)|Distinction (70-100%)|
-|:---|:---|:---|:---|:---|
-|Functionality|Program does not run or produces incorrect results for most cases, including additional requirements.|Program runs and handles basic cases correctly but fails on edge cases, invalid inputs, or additional requirements.|Program handles most cases, including some edge cases and additional requirements, with minor errors.|Program is fully functional, handles all cases (including edge cases, invalid inputs, and additional requirements) gracefully, and produces accurate results consistently.|
-|Code Quality & Standards|Code is poorly organised, difficult to read, and does not meet basic programming conventions.|Code is somewhat organised, but readability could be improved. Some adherence to coding standards is evident, but inconsistencies exist.|Code is well-organised, readable, and mostly adheres to coding standards. Demonstrates a good understanding of clean code principles.|Code is exemplary, demonstrating near-professional-level standards. Adheres to industry best practices and coding standards consistently. Code is highly maintainable and extensible.|
-| Understanding (screen recording) | * Struggles to explain the code's purpose, structure, and functionality in the recording.  * Demonstrates limited understanding of the chosen technologies and implementation choices. *  Unable to showcase and explain the application's features. *  Unable to discuss testing or debugging approaches. *  Shows weak problem-solving skills and provides unclear explanations. | * Can explain the basic purpose and structure of the code in the recording. * Demonstrates a basic understanding of how the application functions and its key features. * Briefly discusses some implementation choices and testing procedures. * Shows some evidence of problem-solving and debugging skills. * Communicates ideas with reasonable clarity in the recording. | * Clearly explains the code's purpose, structure, and functionality in the recording. * Demonstrates a good understanding of the chosen technologies and the reasons behind implementation choices. * Confidently showcases and explains the application's features. * Discusses testing methodologies and debugging techniques. * Effectively explains concepts and shows good problem-solving skills. * Communicates ideas clearly and uses appropriate technical vocabulary in the recording. | * Provides a comprehensive and insightful walkthrough of the codebase, including intricate details and design patterns. * Confidently discusses and justifies implementation choices and their impact on the application. * Thoroughly demonstrates and explains all features, including any advanced additions. * Shows a strong understanding of testing methodologies and debugging approaches. * Demonstrates excellent problem-solving skills and provides insightful explanations. * Communicates ideas with exceptional clarity and precision in the recording. |
+* See the tests in `primer1.test.js`. Run them with `npm test -- primer1`.
+* You can add tests if you think the current tests don't give complete coverage, and alter existing tests if your implementation means one isn't compatible. Highlight both in your screen recording.
+* In your `PORTFOLIO.md`, state the Big O time complexity of serving a ticket in your solution. If you used `Array.prototype.shift()`, what does that cost, and could serving be made O(1)?
+* Commit and push as you go.
+* Your code is marked against the shared rubric in the main [README](../README.md).
