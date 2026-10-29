@@ -53,7 +53,9 @@ getQueueLength(helpdesk);    // 2
 * Undoing an add removes that ticket from the queue. Undoing a serve puts that ticket back at the front of the queue.
 * Several undos in a row reverse actions in the opposite order to the one in which they happened.
 
-### Additional Revisions
+### Stretch (optional)
+
+This part is optional and is not required for any grade band. If you attempt it, remove `.skip` from the "Stretch" tests in `primer1.test.js` so that they run.
 
 Extend the program to support **urgent** tickets:
 
@@ -66,6 +68,6 @@ Extend the program to support **urgent** tickets:
 
 * See the tests in `primer1.test.js`. Run them with `npm test -- primer1`.
 * You can add tests if you think the current tests don't give complete coverage, and alter existing tests if your implementation means one isn't compatible. Highlight both in your screen recording.
-* In your `PORTFOLIO.md`, state the Big O time complexity of serving a ticket in your solution. If you used `Array.prototype.shift()`, what does that cost, and could serving be made O(1)?
+* Give the Big O time complexity of serving a ticket in your `PORTFOLIO.md` table. In your screen recording, explain it: if you used `Array.prototype.shift()`, what does that cost, and could serving be made O(1)?
 * Commit and push as you go.
 * Your code is marked against the shared rubric in the main [README](../README.md).
