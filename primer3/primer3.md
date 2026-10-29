@@ -35,7 +35,7 @@ const results = searchSocialMediaFeed(feed, searchTerm);
 
 ### Notes
 
-* In your `PORTFOLIO.md`, give the Big O time complexity of searching the feed and of sorting the results, and explain your choice of sorting approach.
+* Give the Big O time complexity of searching the feed and of sorting the results in your `PORTFOLIO.md` table, and explain your choice of sorting approach in your screen recording.
 * Run only this primer's tests with `npm test -- primer3`.
 
 * You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.

@@ -30,7 +30,7 @@ console.log(game);
 ### Notes
 
 *   The "Shuffle quality" test checks that every card is equally likely to be dealt first. Some popular shuffling shortcuts, including ones AI tools often suggest, fail it. If yours fails, find out why before changing your approach.
-*   In your `PORTFOLIO.md`, name your shuffling algorithm, explain why it is fair, and give its Big O time complexity. Discuss this in your screen recording too.
+*   Name your shuffling algorithm and give its Big O time complexity in your `PORTFOLIO.md` table. In your screen recording, explain why it is fair.
 *   Run only this primer's tests with `npm test -- primer2`.
 * You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
 * Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible, except the "Shuffle quality" test. These can be highlighted in your screen recording.

@@ -73,7 +73,7 @@ console.log(retrievedProduct); // Should output the laptop details including bra
 4. Make `Product.js` an abstract Class so that Product objects cannot be instantiated. You can modify `primer4.test.js` as you require.
 5. Implement the Factory design pattern, and add your own testing code in `primer4.js`. You can modify `primer4.test.js` as you require.
 6. Implement the Strategy design pattern for pricing. Each product uses a pricing strategy (for example full price, a percentage discount or a clearance price) to work out its selling price, and a product's strategy can be changed while the program runs without editing the product classes. Add tests for your strategies.
-7. The UML class diagrams above do not show the Factory or Strategy patterns. In your `PORTFOLIO.md`, explain how each pattern fits into the design and why it helps.
+7. The UML class diagrams above do not show the Factory or Strategy patterns. In your screen recording, explain how each pattern fits into the design and why it helps.
 
 ### Notes
 
