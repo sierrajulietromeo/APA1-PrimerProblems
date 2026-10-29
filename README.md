@@ -13,7 +13,7 @@ Each primer is worth 10% of the module mark.
 
 ## What to submit
 
-1. **Your code**, committed and pushed regularly to this repository. Your last push before the deadline is the version that is marked.
+1. **Your code**, committed and synced regularly to this repository. Your last commit and sync before the deadline is the version that is marked.
 2. **PORTFOLIO.md**: a short table, already set up for you, listing for each primer the data structures, algorithms and patterns you used, the Big O time complexity of the main operations, and any tests you added. Notes in the table are enough: explain your reasoning in the screen recording.
 3. **One screen recording** (maximum 20 minutes) covering all four primers. See "Your screen recording" below, and the brief for how to submit it.
 
@@ -25,7 +25,7 @@ npm test              # all primers
 npm test -- primer1   # one primer
 ```
 
-The tests also run automatically on GitHub every time you push. Check the **Actions** tab to see whether they pass.
+The tests also run automatically on GitHub every time you sync. Check the **Actions** tab to see whether they pass.
 
 ## Your screen recording
 

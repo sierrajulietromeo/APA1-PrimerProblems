@@ -71,5 +71,5 @@ Extend the program to support **urgent** tickets:
 * See the tests in `primer1.test.js`. Run them with `npm test -- primer1`.
 * You can add tests if you think the current tests don't give complete coverage, and alter existing tests if your implementation means one isn't compatible. Highlight both in your screen recording.
 * Give the Big O time complexity of serving a ticket in your `PORTFOLIO.md` table. In your screen recording, explain it: if you used `Array.prototype.shift()`, what does that cost, and could serving be made O(1)?
-* Commit and push as you go.
+* Commit and sync as you go.
 * Your code is marked against the shared rubric in the main [README](../README.md).

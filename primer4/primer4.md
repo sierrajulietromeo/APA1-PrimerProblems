@@ -78,5 +78,5 @@ console.log(retrievedProduct); // Should output the laptop details including bra
 ### Notes
 
 * Run only this primer's tests with `npm test -- primer4`.
-* Commit and push as you go.
+* Commit and sync as you go.
 * Your code is marked against the Primer 4 rubric in the main [README](../README.md).
