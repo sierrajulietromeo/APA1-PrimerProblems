@@ -28,6 +28,8 @@ A ticket is an object such as:
 { id: 'T001', customer: 'Priya', issue: 'Cannot log in' }
 ```
 
+`createHelpdesk()` and `getQueueLength()` are already written for you in `primer1.js`, to show one way of storing the data. These JavaScript array methods will help with the rest: `push()` adds to the end, `pop()` removes from the end, `shift()` removes from the front and `unshift()` adds to the front. Part of the challenge is deciding which ones make an array behave as a queue, and which make it behave as a stack.
+
 ### Example
 
 ```javascript
