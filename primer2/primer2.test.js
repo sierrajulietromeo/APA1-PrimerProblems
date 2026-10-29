@@ -96,9 +96,10 @@ describe('Card Shuffler', () => {
         cardCounts.set(card, (cardCounts.get(card) || 0) + 1);
       });
       
-      // Each card should appear exactly twice
-      cardCounts.forEach((count, card) => {
-        expect(count).toBeLessThanOrEqual(2);
+      // Each of the 52 cards should appear exactly twice
+      expect(cardCounts.size).toBe(52);
+      cardCounts.forEach((count) => {
+        expect(count).toBe(2);
       });
     });
 
@@ -130,6 +131,30 @@ describe('Card Shuffler', () => {
         const valueCount = allCards.filter(card => card.startsWith(value)).length;
         expect(valueCount).toBe(4);
       });
+    });
+  });
+  describe('Shuffle quality', () => {
+    // A fair shuffle makes every card equally likely to end up first.
+    // This deals a full deck to one player many times and counts which card comes first,
+    // then uses a chi-squared test to check the counts are close to even.
+    // A fair shuffle passes almost every time; common biased shuffles fail by a wide margin.
+    test('every card is equally likely to be dealt first', () => {
+      const runs = 20000;
+      const firstCardCounts = new Map();
+
+      for (let i = 0; i < runs; i++) {
+        const [hand] = shuffleAndDeal(1, 52);
+        firstCardCounts.set(hand[0], (firstCardCounts.get(hand[0]) || 0) + 1);
+      }
+
+      const expected = runs / 52;
+      let chiSquared = 0;
+      firstCardCounts.forEach((count) => {
+        chiSquared += (count - expected) ** 2 / expected;
+      });
+      chiSquared += (52 - firstCardCounts.size) * expected; // cards never dealt first
+
+      expect(chiSquared).toBeLessThan(150);
     });
   });
 });

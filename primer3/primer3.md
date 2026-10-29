@@ -6,11 +6,12 @@ Imagine you're building a social media application where users can post short me
 
 **Challenge:**
 
-Create a JavaScript programme that searches for posts in a social media feed represented as a linked list. The programme should:
+Create a JavaScript program that searches for posts in a social media feed represented as a linked list. The program should:
 
-*   Construct a linked list of posts, where each node has properties like `text`, `timestamp`, and `author`.
-*   Implement a search function that takes a keyword or phrase as input and returns a list of all posts containing that keyword/phrase in their `text`.
-*   Output the search results to the console.
+*   Construct a linked list of posts with `createLinkedList(posts)`. Each node is an object with two properties: `data` (the post) and `next` (the next node, or `null` at the end). The function returns the first node (the head), or `null` if `posts` is an empty array.
+*   Validate every post before building the list, and throw an error if any post is invalid. A valid post has a non-empty `text` string, a non-empty `author` string and a `timestamp` string that is a real date and time, such as `'2024-03-11 10:00:00'`.
+*   Search the feed with `searchSocialMediaFeed(feed, keyword)`, which returns an array of every post whose `text` contains the keyword or phrase, ignoring case. Partial words count: `'ing'` matches "Having".
+*   Return an empty array when nothing matches or the feed is empty.
 
 **Example:**
 
@@ -28,33 +29,16 @@ const results = searchSocialMediaFeed(feed, searchTerm);
 // [{ text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' }]
 ```
 
+### Additional Revisions
+
+*   Return the search results sorted **newest first** by `timestamp`. Posts with the same timestamp keep the order they had in the feed.
+
 ### Notes
+
+* In your `PORTFOLIO.md`, give the Big O time complexity of searching the feed and of sorting the results, and explain your choice of sorting approach.
+* Run only this primer's tests with `npm test -- primer3`.
 
 * You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
 * Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible. These can be highlighted in your screen recording.
-
-### Adopt and use good programming standards
-
-* Eliminate or minimise code duplication & any unnecessary redundancy.
-* Strive for simplicity in logic and flow.
-* Use a consistent naming convention for functions, variables, objects, etc to provide clear contextual value, improved comprehension and quick readability.
-* Use appropriate and consistent indentation, logical grouping and spaced blocks within your codebases; adopt tabs or a set number of spaces (ideally tabs) for indenting.
-* Use spaces consistently to separate operators and delimiters.
-* Be consistent when aligning braces.
-* Avoid deep nested conditionals.
-* Be mindful of single (long) lines of code containing multiple operations; consider 'one line one instruction' unless readable.
-* Keep variable lifetimes and scope as short and as small as possible.
-* Avoid multipurpose functions and variables.
-* Minimise forced type conversion, coercion or casting.
-* Know and test your code: adopt a personal and rigorous testing strategy.
-* Test early and often, fail fast and resolve effectively.
-* Ideally the code should speak for itself. Use comments only when necessary.
-
-
-### Rubric for advanced programming challenges portfolio
-
-|Category|Fail (<40%)|Pass (40-59%)|Merit (60-69%)|Distinction (70-100%)|
-|:---|:---|:---|:---|:---|
-|Functionality|Program does not run or produces incorrect results for most cases, including additional requirements.|Program runs and handles basic cases correctly but fails on edge cases, invalid inputs, or additional requirements.|Program handles most cases, including some edge cases and additional requirements, with minor errors.|Program is fully functional, handles all cases (including edge cases, invalid inputs, and additional requirements) gracefully, and produces accurate results consistently.|
-|Code Quality & Standards|Code is poorly organised, difficult to read, and does not meet basic programming conventions.|Code is somewhat organised, but readability could be improved. Some adherence to coding standards is evident, but inconsistencies exist.|Code is well-organised, readable, and mostly adheres to coding standards. Demonstrates a good understanding of clean code principles.|Code is exemplary, demonstrating near-professional-level standards. Adheres to industry best practices and coding standards consistently. Code is highly maintainable and extensible.|
-| Understanding (screen recording) | * Struggles to explain the code's purpose, structure, and functionality in the recording.  * Demonstrates limited understanding of the chosen technologies and implementation choices. *  Has difficulty showcasing and explaining the application's features. *  Unable to discuss testing or debugging approaches. *  Shows weak problem-solving skills and provides unclear explanations. | * Can explain the basic purpose and structure of the code in the recording. * Demonstrates a basic understanding of how the application functions and its key features. * Briefly discusses some implementation choices and testing procedures. * Shows some evidence of problem-solving and debugging skills. * Communicates ideas with reasonable clarity in the recording. | * Clearly explains the code's purpose, structure, and functionality in the recording. * Demonstrates a good understanding of the chosen technologies and the reasons behind implementation choices. * Confidently showcases and explains the application's features. * Discusses testing methodologies and debugging techniques. * Effectively explains concepts and shows good problem-solving skills. * Communicates ideas clearly and uses appropriate technical vocabulary in the recording. | * Provides a comprehensive and insightful walkthrough of the codebase, including intricate details and design patterns. * Confidently discusses and justifies implementation choices and their impact on the application. * Thoroughly demonstrates and explains all features, including any advanced additions. * Shows a strong understanding of testing methodologies and debugging approaches. * Demonstrates excellent problem-solving skills and provides insightful explanations. * Communicates ideas with exceptional clarity and precision in the recording. |
+* Commit and push as you go.
+* Your code is marked against the shared rubric in the main [README](../README.md).

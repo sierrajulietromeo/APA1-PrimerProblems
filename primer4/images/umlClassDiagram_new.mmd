@@ -1,0 +1,35 @@
+classDiagram
+  class Inventory {
+    -products : Map~string, Product~
+    +addProduct(product: Product) void
+    +updateQuantity(id: string, quantity: number) void
+    +getProduct(id: string) Object
+    +removeProduct(id: string) void
+    +getNumOfItems() number
+  }
+  class Product {
+    <<abstract>>
+    -id : string
+    -name : string
+    -price : number
+    -quantity : number
+    +«get» id : string
+    +«get» name : string
+    +«get» price : number
+    +«get» quantity : number
+    +«set» quantity : number
+    +getProductDetails() Object
+  }
+  class Clothing {
+    -size : string
+    -material : string
+    +getProductDetails() Object
+  }
+  class Electronics {
+    -brand : string
+    -warranty : string
+    +getProductDetails() Object
+  }
+  Inventory "1" o-- "0..*" Product
+  Product <|-- Clothing
+  Product <|-- Electronics
