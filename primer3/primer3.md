@@ -40,5 +40,5 @@ const results = searchSocialMediaFeed(feed, searchTerm);
 
 * You can add additional tests if you determine the current tests don't offer complete coverage. These can be highlighted in your screen recording.
 * Existing tests can be altered should your choice of implementation mean that an existing test isn't compatible. These can be highlighted in your screen recording.
-* Commit and push as you go.
+* Commit and sync as you go.
 * Your code is marked against the shared rubric in the main [README](../README.md).

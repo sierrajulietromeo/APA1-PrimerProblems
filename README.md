@@ -13,9 +13,10 @@ Each primer is worth 10% of the module mark.
 
 ## What to submit
 
-1. **Your code**, committed and pushed regularly to this repository. Your last push before the deadline is the version that is marked.
+1. **Your code**, committed and synced regularly to this repository. Your last commit and sync before the deadline is the version that is marked.
 2. **PORTFOLIO.md**: a short table, already set up for you, listing for each primer the data structures, algorithms and patterns you used, the Big O time complexity of the main operations, and any tests you added. Notes in the table are enough: explain your reasoning in the screen recording.
-3. **One screen recording** (maximum 20 minutes) covering all four primers. See "Your screen recording" below, and the brief for how to submit it.
+3. **AI_REFLECTION.md**: a short reflection of about 200 words on how you used AI, answering the prompts in the file. It is required but not marked.
+4. **One screen recording** (maximum 20 minutes) covering all four primers. See "Your screen recording" below, and the brief for how to submit it.
 
 ## Running the tests
 
@@ -25,7 +26,7 @@ npm test              # all primers
 npm test -- primer1   # one primer
 ```
 
-The tests also run automatically on GitHub every time you push. Check the **Actions** tab to see whether they pass.
+The tests also run automatically on GitHub every time you sync. Check the **Actions** tab to see whether they pass.
 
 ## Your screen recording
 
@@ -66,7 +67,7 @@ You don't need to answer every one for every primer, but these are the kinds of 
 
 ## Use of AI tools
 
-This assignment is in the **Green** category: you may use generative AI tools, including to help write code. You must be able to explain, and change, any code you submit, and the screen recording is where you show this. You do not need to record your AI use here or discuss it in your recording: you will reflect on it in the end-of-module AI reflection.
+This assignment is in the **Yellow** category: you may use generative AI tools in preparing for and completing it, including in drafting and refining your code. You must critically evaluate and modify anything AI produces, and be able to explain, and change, any code you submit: the screen recording is where you show this. You explain where you used AI in `AI_REFLECTION.md` (required but not marked), so you do not need to discuss it in your recording.
 
 ### Adopt and use good programming standards
 
