@@ -66,7 +66,7 @@ You don't need to answer every one for every primer, but these are the kinds of 
 
 ## Use of AI tools
 
-This assignment is in the **Green** category: you may use generative AI tools, including to help write code. You must be able to explain, and change, any code you submit, and the screen recording is where you show this. You do not need to record your AI use here or discuss it in your recording: you will reflect on it in the end-of-module AI reflection.
+This assignment is in the **Yellow** category: you may use generative AI tools in preparing for and completing it, including in drafting and refining your code. You must critically evaluate and modify anything AI produces, and be able to explain, and change, any code you submit: the screen recording is where you show this. You explain where you used AI in the end-of-module AI reflection, so you do not need to record it here or discuss it in your recording.
 
 ### Adopt and use good programming standards
 
